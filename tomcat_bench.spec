@@ -10,7 +10,7 @@ Source2: tomcat_bench@.service
 Source3: tomcat_bench-nojsvc@.service
 BuildArch: noarch
 
-Requires: java-1.8.0-openjdk, apache-commons-daemon-jsvc
+Requires: java-11-openjdk, apache-commons-daemon-jsvc
 
 Requires(pre): shadow-utils
 %{?systemd_requires}
