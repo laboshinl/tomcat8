@@ -1,0 +1,2 @@
+CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC -Djava.awt.headless=true -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=production,metrics
+

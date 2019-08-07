@@ -9,7 +9,6 @@ Environment=JAVA_HOME=/usr/lib/jvm/jre
 Environment=CATALINA_PID=/opt/tomcat_bench/temp/tomcat.pid
 Environment=CATALINA_HOME=/opt/tomcat_bench
 Environment=CATALINA_BASE=/opt/tomcat_bench
-Environment='CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC -Djava.awt.headless=true -Djava.security.egd=file:/dev/./urandom'
 Environment=JSVC=/usr/bin/jsvc
 Environment=TOMCAT_USER=bench
 EnvironmentFile=-/etc/sysconfig/tomcat_bench

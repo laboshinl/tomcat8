@@ -8,6 +8,7 @@ Source0: https://archive.apache.org/dist/tomcat/tomcat-8/v%{version}/bin/apache-
 Source1: tomcat_bench.service
 Source2: tomcat_bench@.service
 Source3: tomcat_bench-nojsvc@.service
+Source4: tomcat_bench
 BuildArch: noarch
 
 Requires: java-11-openjdk, apache-commons-daemon-jsvc
@@ -30,10 +31,10 @@ BuildRequires: systemd
 
 %pre
 # add the tomcat user and group
-getent group tomcat >/dev/null || /usr/sbin/groupadd -f -g 445 -r bench
+getent group bench >/dev/null || /usr/sbin/groupadd -f -g 445 -r bench
 if ! getent passwd bench >/dev/null ; then
     if ! getent passwd 445 >/dev/null ; then
-        /usr/sbin/useradd -r -u 445 -g bench -d /home/bench -s /sbin/nologin -c "CML Bench" bench
+        /usr/sbin/useradd -r -u 445 -g bench -m -d /home/bench -s /sbin/nologin -c "CML Bench" bench
     fi
 fi
 exit 0
@@ -45,16 +46,19 @@ Tomcat 8 binary
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/opt/tomcat_bench
 tar xvf  %{SOURCE0} -C %{buildroot}/opt/tomcat_bench --strip-components=1
-mkdir -p %{buildroot}/usr/lib/systemd/system/
-cp %{SOURCE1} %{buildroot}/usr/lib/systemd/system/
-cp %{SOURCE2} %{buildroot}/usr/lib/systemd/system/
-cp %{SOURCE3} %{buildroot}/usr/lib/systemd/system/
+mkdir -p %{buildroot}/etc/systemd/system/
+mkdir -p %{buildroot}/etc/sysconfig
+cp %{SOURCE1} %{buildroot}/etc/systemd/system/
+cp %{SOURCE2} %{buildroot}/etc/systemd/system/
+cp %{SOURCE3} %{buildroot}/etc/systemd/system/
+cp ${SOURCE4} %{buildroot}/etc/syscofig/
 rm -rf %{buildroot}/opt/tomcat_bench/webapps/examples
 
 
 %files
 %defattr(-,root,bench)
-/usr/lib/systemd/system/*
+/etc/systemd/system/*
+/etc/sysconfig/*
 /opt/tomcat_bench/lib/*
 /opt/tomcat_bench/bin/*
 %doc /opt/tomcat_bench/BUILDING.txt
