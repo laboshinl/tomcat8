@@ -32,7 +32,7 @@ BuildRequires: systemd
 getent group bench >/dev/null || /usr/sbin/groupadd -f -g 445 -r bench
 if ! getent passwd bench >/dev/null ; then
     if ! getent passwd 445 >/dev/null ; then
-        /usr/sbin/useradd -r -u 445 -g bench -m -d /home/bench -s /sbin/nologin -c "CML Bench" bench
+        /usr/sbin/useradd -r -u 445 -g bench -m -d /opt/cml-bench/ -s /sbin/nologin -c "CML Bench" bench
     fi
 fi
 exit 0
