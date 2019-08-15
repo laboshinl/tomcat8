@@ -51,7 +51,7 @@ mkdir -p %{buildroot}/etc/sysconfig
 cp %{SOURCE1} %{buildroot}/etc/systemd/system/
 cp %{SOURCE2} %{buildroot}/etc/systemd/system/
 cp %{SOURCE3} %{buildroot}/etc/systemd/system/
-cp ${SOURCE4} %{buildroot}/etc/syscofig/
+cp %{SOURCE4} %{buildroot}/etc/sysconfig/
 rm -rf %{buildroot}/opt/tomcat_bench/webapps/examples
 
 
