@@ -6,8 +6,6 @@ License: GPL
 URL: %{url_prefix}/%{name} 
 Source0: https://archive.apache.org/dist/tomcat/tomcat-8/v%{version}/bin/apache-tomcat-%{version}.tar.gz
 Source1: tomcat_bench.service
-Source2: tomcat_bench@.service
-Source3: tomcat_bench-nojsvc@.service
 Source4: tomcat_bench
 BuildArch: noarch
 
@@ -49,8 +47,6 @@ tar xvf  %{SOURCE0} -C %{buildroot}/opt/tomcat_bench --strip-components=1
 mkdir -p %{buildroot}/etc/systemd/system/
 mkdir -p %{buildroot}/etc/sysconfig
 cp %{SOURCE1} %{buildroot}/etc/systemd/system/
-cp %{SOURCE2} %{buildroot}/etc/systemd/system/
-cp %{SOURCE3} %{buildroot}/etc/systemd/system/
 cp %{SOURCE4} %{buildroot}/etc/sysconfig/
 rm -rf %{buildroot}/opt/tomcat_bench/webapps/examples
 
